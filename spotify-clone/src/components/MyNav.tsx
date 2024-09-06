@@ -63,12 +63,14 @@ const MyNav = () => {
                     </div>
                 </div>
                 <div className="pt-1 mt-1 border-top border-secondary w-100">
+                    {/* 
+                        Con l'utilizzo del && comparivano due 0 al posto dei link ¯\_(ツ)_/¯ 
+                    */}
                     {
-                        customPlaylist.length && <div><Link to={'/playlist'} className="text-light text-decoration-none small">Custom Playlist </Link></div>
+                        customPlaylist.length ? (<div><Link to={'/playlist'} className="text-light text-decoration-none small">Custom Playlist </Link></div>) : ''
                     }
                     {
-                        preferiteSongs.length && <div><Link to={'/preferite'} className="text-light text-decoration-none small">Preferite Songs </Link></div>
-
+                        preferiteSongs.length ? (<div><Link to={'/preferite'} className="text-light text-decoration-none small">Preferite Songs </Link></div>) : ''
                     }
                 </div>
 

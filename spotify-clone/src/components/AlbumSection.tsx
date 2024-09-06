@@ -3,8 +3,9 @@ import { fetchSearch } from "../modules/fetch";
 import { useEffect, useState } from "react";
 import { TrackList } from "../interfaces/fetch";
 import AlbumCard from "./AlbumCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { _store } from "../redux/store";
+import { addToSearchHistory } from "../redux/actions";
 
 interface props {
     searchWord?: string,
@@ -18,14 +19,18 @@ const AlbumSection = (props: props) => {
     const [trackList, setTrackList] = useState<TrackList>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
+    const dispatch = useDispatch();
+
     const handleFetch = (res: TrackList) => {
         setTrackList(res);
         setIsLoading(false);
+        dispatch(addToSearchHistory(res));
     }
 
     useEffect(() => {
         if (props.searchWord)
             fetchSearch(props.searchWord, handleFetch)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.searchWord])
 
     const playlist = useSelector((store: _store) => store.customPlaylist.content)

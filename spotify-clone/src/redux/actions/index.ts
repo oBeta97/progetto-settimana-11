@@ -1,11 +1,16 @@
 import { UnknownAction } from "redux";
-import { Track } from "../../interfaces/fetch";
+import { Track, TrackList } from "../../interfaces/fetch";
 
 export const ADD_TRACK = 'ADD_TRACK';
+
 export const ADD_TRACK_TO_PREFERITE = 'ADD_TRACK_TO_PREFERITE';
 export const REMOVE_TRACK_TO_PREFERITE = 'REMOVE_TRACK_TO_PREFERITE';
+
 export const ADD_TRACK_TO_PLAYLIST = 'ADD_TRACK_TO_PLAYLIST';
 export const REMOVE_TRACK_TO_PLAYLIST = 'REMOVE_TRACK_TO_PLAYLIST';
+
+export const ADD_SEARCH_HISTORY = 'ADD_SEARCH_HISTORY';
+
 
 // Purtroppo questa interfaccia è bella ma inutile :(
 // Redux accetta solo le UnknownAction e non action personalizzate, credo!
@@ -47,5 +52,12 @@ export const removeTrackToPlaylist = (track: Track):UnknownAction => {
     return {
         type: REMOVE_TRACK_TO_PLAYLIST,
         payload: track,
+    }
+}
+
+export const addToSearchHistory = (trackList: TrackList):UnknownAction => {
+    return {
+        type: ADD_SEARCH_HISTORY,
+        payload: trackList,
     }
 }

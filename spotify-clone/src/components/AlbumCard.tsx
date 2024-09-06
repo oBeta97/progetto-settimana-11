@@ -1,8 +1,7 @@
-import { Button, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { Track } from "../interfaces/fetch";
 import { useDispatch, useSelector } from "react-redux";
 import { addTrack } from "../redux/actions";
-import { FaPlus } from "react-icons/fa";
 import { _store } from "../redux/store";
 import PreferiteSongBtn from "./PreferiteSongBtn";
 import AddToPlaylistBtn from "./AddToPlaylistBtn";
@@ -43,7 +42,7 @@ const AlbumCard = function (props: props) {
                     <PreferiteSongBtn track={props.track} preferiteSongs={preferiteSongs} />
                 </Col>
                 <Col>
-                    <AddToPlaylistBtn track={props.track} playlist={customPlaylist}  />
+                    <AddToPlaylistBtn track={props.track} playlist={customPlaylist} />
                 </Col>
             </Row >
         </Col >);

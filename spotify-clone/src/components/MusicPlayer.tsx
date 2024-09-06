@@ -1,19 +1,32 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
-
-import shuffle from '../assets/playerbuttons/shuffle.png'
-import prev from '../assets/playerbuttons/prev.png'
-import play from '../assets/playerbuttons/play.png'
-import next from '../assets/playerbuttons/next.png'
-import repeat from '../assets/playerbuttons/repeat.png'
 import { useSelector } from "react-redux";
 import { _store } from "../redux/store";
+import { useState } from "react";
+import { FaBackward, FaExchangeAlt, FaForward, FaPlay, FaRandom } from "react-icons/fa";
 
 
 const MusicPlayer = () => {
 
     const selectedSongs = useSelector((store: _store) => store.trackList.content)
+    const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
+
+    const handleClick = (isNext: boolean) => {
+        if (
+            selectedIndex + 1 === selectedSongs.length ||
+            (selectedIndex === 0 && !isNext)
+        ) {
+            setSelectedIndex(0);
+            return;
+        }
+
+        if (!isNext) {
+            setSelectedIndex(selectedIndex - 1)
+            return;
+        }
+
+        setSelectedIndex(selectedIndex + 1)
+    }
 
     return (
         <Container fluid className="fixed-bottom bg-container pt-1">
@@ -24,9 +37,9 @@ const MusicPlayer = () => {
                     >
                         <Col xs={3} md={4}>
                             {
-                                selectedSongs.length &&
+                                selectedSongs[selectedIndex] &&
                                 <img
-                                    src={selectedSongs[0].album.cover_xl}
+                                    src={selectedSongs[selectedIndex].album.cover_xl}
                                     alt="album cover"
                                     className="ms-4"
                                     style={{ height: "4em" }}
@@ -34,22 +47,12 @@ const MusicPlayer = () => {
                             }
                         </Col>
                         <Col xs={6} md={4} className="playerControls">
-                            <div className="d-flex">
-                                <Link to={'/'}>
-                                    <img src={shuffle} alt="shuffle" />
-                                </Link>
-                                <Link to={'/'}>
-                                    <img src={prev} alt="prev" />
-                                </Link>
-                                <Link to={'/'}>
-                                    <img src={play} alt="play" />
-                                </Link>
-                                <Link to={'/'}>
-                                    <img src={next} alt="next" />
-                                </Link>
-                                <Link to={'/'}>
-                                    <img src={repeat} alt="repeat" />
-                                </Link>
+                            <div className="d-flex text-light">
+                                    <FaRandom />
+                                    <FaBackward className="cursor-pointer" onClick={() => handleClick(false)} />
+                                    <FaPlay />
+                                    <FaForward className="cursor-pointer" onClick={() => handleClick(true)} />
+                                    <FaExchangeAlt />
                             </div>
                             <div className="progress mt-3">
                                 <div role="progressbar"></div>
@@ -57,10 +60,10 @@ const MusicPlayer = () => {
                         </Col>
                         <Col xs={3} md={4}>
                             {
-                                selectedSongs.length &&
+                                selectedSongs[selectedIndex] &&
                                 <p className="text-light text-end">
-                                    Track: "{selectedSongs[0].title_short}"<br />
-                                    Artist: {selectedSongs[0].artist.name}
+                                    Track: "{selectedSongs[selectedIndex].title_short}"<br />
+                                    Artist: {selectedSongs[selectedIndex].artist.name}
                                 </p>
                             }
                         </Col>
