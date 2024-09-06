@@ -1,5 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import AlbumSection from "./AlbumSection";
 
 const MyMain = () => {
     return (
@@ -16,35 +17,17 @@ const MyMain = () => {
             </Row>
             <Row>
                 <Col xs={10}>
-                    <div id="rock">
-                        <h2>Rock Classics</h2>
-                        <div
-                            className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
-                            id="rockSection"
-                        ></div>
-                    </div>
+                    <AlbumSection searchWord="Queen" />
                 </Col>
             </Row>
             <Row>
                 <Col xs={10}>
-                    <div id="pop">
-                        <h2>Pop Culture</h2>
-                        <div
-                            className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
-                            id="popSection"
-                        ></div>
-                    </div>
+                    <AlbumSection searchWord="Katy Perry" />
                 </Col>
             </Row>
             <Row>
                 <Col xs={10}>
-                    <div id="hiphop">
-                        <h2>#HipHop</h2>
-                        <div
-                            className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
-                            id="hipHopSection"
-                        ></div>
-                    </div>
+                    <AlbumSection searchWord="Eminem" />
                 </Col>
             </Row>
         </>
