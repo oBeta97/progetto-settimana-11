@@ -28,7 +28,8 @@ const AlbumSection = (props: props) => {
             <h2>{props.searchWord}</h2>
             <Row
                 xs={1} sm={2} lg={3} xl={4}
-                className=" imgLinks py-3"
+                // Ho provato ad aggiungere un gap ma a quanto pare flex non gestisce bene la cosa...
+                className=" imgLinks py-3 g-3"
             >
                 {
                     isLoading ? (

@@ -1,7 +1,10 @@
-import { Col } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import { Track } from "../interfaces/fetch";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTrack } from "../redux/actions";
+import { FaPlus } from "react-icons/fa";
+import { _store } from "../redux/store";
+import PreferiteSongBtn from "./PreferiteSongBtn";
 
 interface props {
     track: Track
@@ -11,22 +14,42 @@ const AlbumCard = function (props: props) {
 
     // console.log(props);
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
+    const preferiteSongs = useSelector((store: _store) => store.preferiteSongs.content)
 
 
     return (
-        <Col className="text-center">
+        <Col
+            className="text-center 
+                border rounded-4 border-secondary 
+                d-flex flex-column justify-content-between
+            "
+        >
             <img
                 className="img-fluid cursor-pointer"
                 src={props.track.album.cover_xl}
                 alt="track"
-                onClick={()=> dispatch(addTrack(props.track))}
+                onClick={() => dispatch(addTrack(props.track))}
             />
             <p>
                 Track: "{props.track.title_short}"<br />
                 Artist: {props.track.artist.name}
             </p>
-        </Col>);
+            <Row className="mb-2">
+                <Col>
+                    <PreferiteSongBtn track={props.track} preferiteSongs={preferiteSongs} />
+                </Col>
+                <Col>
+                    <Button
+                        className="btn-outline-success bg-transparent btn-sm"
+                        onClick={() => ""}
+                    >
+                        <FaPlus />
+                    </Button>
+                </Col>
+            </Row >
+        </Col >);
 };
 
 
