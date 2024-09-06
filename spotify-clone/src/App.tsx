@@ -6,6 +6,7 @@ import MusicPlayer from './components/MusicPlayer';
 import {  Route, Routes } from 'react-router-dom';
 import SearchPage from './components/SearchPage';
 import MyMainTopLinks from './components/MyMainTopLinks';
+import AlbumSection from './components/AlbumSection';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
               <Routes>
                 <Route path='/' element={<MyMain />} />
                 <Route path='/search/:searchString' element={<SearchPage />} />
+                <Route path='/playlist' element={<AlbumSection cardNumber={100} playlist={true} />} />
+                <Route path='/preferite' element={<AlbumSection cardNumber={100} preferite={true} />} />
               </Routes>
             </main>
           </Col>

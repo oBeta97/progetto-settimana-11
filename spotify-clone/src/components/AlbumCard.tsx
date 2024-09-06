@@ -5,6 +5,7 @@ import { addTrack } from "../redux/actions";
 import { FaPlus } from "react-icons/fa";
 import { _store } from "../redux/store";
 import PreferiteSongBtn from "./PreferiteSongBtn";
+import AddToPlaylistBtn from "./AddToPlaylistBtn";
 
 interface props {
     track: Track
@@ -17,6 +18,7 @@ const AlbumCard = function (props: props) {
     const dispatch = useDispatch();
 
     const preferiteSongs = useSelector((store: _store) => store.preferiteSongs.content)
+    const customPlaylist = useSelector((store: _store) => store.customPlaylist.content)
 
 
     return (
@@ -41,12 +43,7 @@ const AlbumCard = function (props: props) {
                     <PreferiteSongBtn track={props.track} preferiteSongs={preferiteSongs} />
                 </Col>
                 <Col>
-                    <Button
-                        className="btn-outline-success bg-transparent btn-sm"
-                        onClick={() => ""}
-                    >
-                        <FaPlus />
-                    </Button>
+                    <AddToPlaylistBtn track={props.track} playlist={customPlaylist}  />
                 </Col>
             </Row >
         </Col >);

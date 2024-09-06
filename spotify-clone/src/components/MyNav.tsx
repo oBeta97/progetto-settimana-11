@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.png'
 import SearchBar from "./SearchBar";
+import { useSelector } from "react-redux";
+import { _store } from "../redux/store";
 
 
 const MyNav = () => {
+
+    const customPlaylist = useSelector((store: _store) => store.customPlaylist.content);
+    const preferiteSongs = useSelector((store: _store) => store.preferiteSongs.content);
+
     return (
         <nav
             className="navbar navbar-expand-md fixed-left justify-content-between"
@@ -56,6 +62,16 @@ const MyNav = () => {
                         </ul>
                     </div>
                 </div>
+                <div className="pt-1 mt-1 border-top border-secondary w-100">
+                    {
+                        customPlaylist.length && <div><Link to={'/playlist'} className="text-light text-decoration-none small">Custom Playlist </Link></div>
+                    }
+                    {
+                        preferiteSongs.length && <div><Link to={'/preferite'} className="text-light text-decoration-none small">Preferite Songs </Link></div>
+
+                    }
+                </div>
+
             </div>
             <div className="nav-btn">
                 <button className="btn signup-btn" type="button">Sign Up</button>
