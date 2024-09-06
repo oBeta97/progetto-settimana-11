@@ -1,33 +1,22 @@
 import { Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import AlbumSection from "./AlbumSection";
 
 const MyMain = () => {
     return (
-
         <>
             <Row>
-                <Col xs={9} lg={11} className="mainLinks d-none d-md-flex">
-                    <Link to={'/'}>TRENDING</Link>
-                    <Link to={'/'}>PODCAST</Link>
-                    <Link to={'/'}>MOODS AND GENRES</Link>
-                    <Link to={'/'}>NEW RELEASES</Link>
-                    <Link to={'/'}>DISCOVER</Link>
+                <Col xs={10}>
+                    <AlbumSection searchWord="Queen" cardNumber={4} />
                 </Col>
             </Row>
             <Row>
                 <Col xs={10}>
-                    <AlbumSection searchWord="Queen" />
+                    <AlbumSection searchWord="Katy Perry" cardNumber={4} />
                 </Col>
             </Row>
             <Row>
                 <Col xs={10}>
-                    <AlbumSection searchWord="Katy Perry" />
-                </Col>
-            </Row>
-            <Row>
-                <Col xs={10}>
-                    <AlbumSection searchWord="Eminem" />
+                    <AlbumSection searchWord="Eminem" cardNumber={4} />
                 </Col>
             </Row>
         </>

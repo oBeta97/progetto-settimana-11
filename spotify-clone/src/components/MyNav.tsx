@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.png'
+import SearchBar from "./SearchBar";
 
 
 const MyNav = () => {
@@ -9,14 +10,14 @@ const MyNav = () => {
             id="sidebar"
         >
             <div className="container flex-column align-items-start">
-                <a className="navbar-brand" href="index.html">
+                <Link className="navbar-brand" to="/">
                     <img
                         src={logo}
                         alt="Spotify Logo"
                         width="131"
                         height="40"
                     />
-                </a>
+                </Link>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -50,21 +51,7 @@ const MyNav = () => {
                                 </Link>
                             </li>
                             <li>
-                                <div className="input-group mt-3">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Search"
-                                        aria-label="Search"
-                                    />
-                                    <div className="input-group-append">
-                                        <button
-                                            className="btn btn-outline-secondary btn-sm h-100"
-                                        >
-                                            GO
-                                        </button>
-                                    </div>
-                                </div>
+                                <SearchBar />
                             </li>
                         </ul>
                     </div>

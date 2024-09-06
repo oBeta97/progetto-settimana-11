@@ -7,7 +7,7 @@ interface props {
 
 const AlbumCard = function (props:props) {
 
-    console.log(props);
+    // console.log(props);
 
     return (
         <Col className="text-center">

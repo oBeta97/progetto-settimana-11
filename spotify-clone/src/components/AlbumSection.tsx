@@ -6,6 +6,7 @@ import AlbumCard from "./AlbumCard";
 
 interface props {
     searchWord: string,
+    cardNumber: number,
 }
 
 const AlbumSection = (props: props) => {
@@ -36,7 +37,7 @@ const AlbumSection = (props: props) => {
                         </Spinner>
                     ) : (
                         trackList?.data.map((track, i) => {
-                            if (i >= 4)
+                            if (i >= props.cardNumber)
                                 return("");
 
                             return (<AlbumCard key={i} track={track}/>)
